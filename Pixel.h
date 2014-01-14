@@ -30,13 +30,13 @@ public:
   /**
    * Constructor without Energy
    */
-   Pixel (float p_position_x,float p_position_y, float p_size_x, float p_size_x );
+   Pixel (float p_position_x,float p_position_y, float p_size_x, float p_size_y );
 
    /**
    * Constructor with Energy
    */
 
-   Pixel (float p_position_x,float p_position_y, float p_size_x, float p_size_x, float energy );
+   Pixel (float p_position_x,float p_position_y, float p_size_x, float p_size_y, float energy );
 
   /**
    * Empty Destructor
@@ -61,7 +61,7 @@ private:
   /**
    * Wird von Konstruktoren aufgerufen
    */
-   void initAttributes ( float p_position_x,float p_position_y, float p_size_x, float p_size_x, float energy) ;
+   void initAttributes ( float p_position_x,float p_position_y, float p_size_x, float p_size_y, float energy) ;
 
 public:
 
