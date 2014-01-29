@@ -46,7 +46,7 @@ void Simulation::printEnergies ( )
     std::vector<Pixel*> pixels = p_sensor.getP_sensorpixelpointer();
 
     for (unsigned int i = 0 ; i < pixels.size(); i++){
-         pixels[i]->toString();// i in 100 geänert!
+         pixels[i]->toString(false);// i in 100 geänert!
    }
 
 }

@@ -177,8 +177,9 @@ public:
   //
   //Ausgabe aller wichtigen Daten in Konsole x,y delta x,y  und Energie
   //
-  void toString(){
-    cout << "x:" << p_position_x << "  DeltaX:" << p_size_x  <<"  y:" << p_position_y <<"   DeltaY:" <<p_size_y << "  Energie:"<< p_energy<< endl;
+  void toString(bool printIfZero = true){
+	if (!printIfZero && p_energy == 0) return;
+    cout << "[" << p_position_x << "," << p_position_y << "] [" << p_size_x << "," << p_size_y  << "] -> "<< p_energy<< endl;
 }
 
 
