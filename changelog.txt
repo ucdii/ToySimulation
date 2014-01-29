@@ -1,0 +1,8 @@
+2014-01-29:
+- integrated to MS Visual Studio 2012 (created subfolder with solution files)
+- replaced float by double to get rid of compiler warning #4244
+- fixed compiler error caused by inappropriate usage of 'using namespace std;'
+- fixed strange #include "file.cpp"
+- fixed compiler errors caused by inconsistent return paths
+- removed exit() calls and replaced by appropriate pendants (return, throw)
+- refactored Vector3d::norm method (guarantee never to throw (or even call exit())

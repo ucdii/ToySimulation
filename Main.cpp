@@ -1,13 +1,13 @@
-
 #include <iostream>
 #include <fstream>
-using namespace std;
 
-#include "Simulation.cpp"
+#include "Simulation.h"
+
+#define PROGRAM_EXIT_OK 0
+#define PROGRAM_EXIT_ERROR 1
 
 int main()
 {
-
 
     // einlesen der Pixel aus Sensordaten.txt
     ifstream Sensordaten;
@@ -23,7 +23,7 @@ int main()
     if (Sensordaten.is_open()) {
             // Anzahl der Pixel die als erstes ind er Tabelle gegeben werden
 
-            float sensor_x, sensor_y, sensor_z;
+            double sensor_x, sensor_y, sensor_z;
             Sensordaten >> sensor_x;
             Sensordaten >> sensor_y;
             Sensordaten >> sensor_z;
@@ -34,7 +34,7 @@ int main()
 
             for(unsigned int i = 1; i <= numberofpixels; i++){
                   // Deklaration der einzelenen Elemente die in den Pixel array geschrieben werden sollen
-                  float p_x, p_y, p_size_x,p_size_y,;
+                  double p_x, p_y, p_size_x,p_size_y;
                   // Einlesen der parameter
                   Sensordaten >> p_x;
                   Sensordaten >> p_y;
@@ -50,12 +50,12 @@ int main()
 
           }
          else{
-           cout << "Sensordaten.txt ist fehlerhaft"  << endl;
-           exit(0);
+           cout << "Konnte Sensordaten.txt nicht laden ..."  << endl;
+           return PROGRAM_EXIT_ERROR;
          }
     Sensordaten.close();
 
-    float energy, position_x, position_y, position_z, direction_x, direction_y, direction_z;
+    double energy, position_x, position_y, position_z, direction_x, direction_y, direction_z;
     // Einlesen der Anfangsbedingungen über Console
     cout << "Choose start  Energy, Position and Direction of the Particle" << endl;
     cout << "Fist the Energy: ";
@@ -73,9 +73,4 @@ int main()
     // Ausgabe der Sensor Properties
     simulation.printSensorProperties();
     simulation.printEnergies();
-
-
-
-
-
 }

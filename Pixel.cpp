@@ -12,10 +12,10 @@ initAttributes(0,0,0,0,0);
    * Constructor
    */
 
-Pixel::Pixel ( float position_x,float position_y, float size_x, float size_y ) {
+Pixel::Pixel ( double position_x,double position_y, double size_x, double size_y ) {
 initAttributes(position_x, position_y, size_x, size_y, 0);
 }
-Pixel::Pixel ( float position_x,float position_y, float size_x, float size_y , float energy) {
+Pixel::Pixel ( double position_x,double position_y, double size_x, double size_y , double energy) {
 initAttributes(position_x, position_y, size_x, size_y, energy);
 }
 
@@ -28,7 +28,7 @@ Pixel::~Pixel ( ) { }
    * Funktion wird von Constructoren aufgerufen und erstellt die privaten Variablen
    */
 
-void Pixel::initAttributes (float position_x,float position_y, float size_x, float size_y, float energy ) {
+void Pixel::initAttributes (double position_x,double position_y, double size_x, double size_y, double energy ) {
     setP_position_x(position_x);
     setP_position_y(position_y);
     setP_size_x(size_x);
@@ -40,8 +40,8 @@ void Pixel::initAttributes (float position_x,float position_y, float size_x, flo
    * Funktion addiert energy auf den privaten Wert p_energy der Pixelklasse
    */
 
-void Pixel::addP_energy(float energy){
-   float new_energy = p_energy+energy ;//getP_energy+p_energy;
+void Pixel::addP_energy(double energy){
+   double new_energy = p_energy+energy ;//getP_energy+p_energy;
     setP_energy(new_energy);
 }
 

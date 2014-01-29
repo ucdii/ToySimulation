@@ -4,8 +4,8 @@
 
 #include <string>
 #include <vector>
-#include "Pixel.cpp "
-//#include "Vector3D.cpp"
+#include "Pixel.h"
+#include "Vector3D.h"
 
 
 
@@ -31,7 +31,7 @@ public:
   /**
    * Constructor
    */
-   Sensor(float p_size_x, float p_size_y, float  p_size_z, unsigned int N);
+   Sensor(double p_size_x, double p_size_y, double  p_size_z, unsigned int N);
 
   /**
    * Empty Destructor
@@ -43,9 +43,9 @@ public:
    // Private attributes
    //
 
-  float p_size_x;
-  float p_size_y;
-  float p_size_z;
+  double p_size_x;
+  double p_size_y;
+  double p_size_z;
   std::vector<Pixel*> p_sensorpixelpointer;
 
 
@@ -69,7 +69,7 @@ public:
   /**
    * Wird von Konstruktoren verwendet
    */
-  void initAttributes ( float size_x, float size_y, float size_z, unsigned int N) ;
+  void initAttributes ( double size_x, double size_y, double size_z, unsigned int N) ;
 
 
 
@@ -110,7 +110,7 @@ public:
    * Set the value of p_size_x
    * @param new_var the new value of p_size_x
    */
-  void setP_size_x ( float new_var )   {
+  void setP_size_x ( double new_var )   {
       p_size_x = new_var;
   }
 
@@ -118,7 +118,7 @@ public:
    * Get the value of p_size_x
    * @return the value of p_size_x
    */
-  float getP_size_x ( )   {
+  double getP_size_x ( )   {
     return p_size_x;
   }
 
@@ -126,7 +126,7 @@ public:
    * Set the value of p_size_y
    * @param new_var the new value of p_size_y
    */
-  void setP_size_y ( float new_var )   {
+  void setP_size_y ( double new_var )   {
       p_size_y = new_var;
   }
 
@@ -134,7 +134,7 @@ public:
    * Get the value of p_size_y
    * @return the value of p_size_y
    */
-  float getP_size_y ( )   {
+  double getP_size_y ( )   {
     return p_size_y;
   }
 
@@ -142,7 +142,7 @@ public:
    * Set the value of p_size_z
    * @param new_var the new value of p_size_z
    */
-  void setP_size_z ( float new_var )   {
+  void setP_size_z ( double new_var )   {
       p_size_z = new_var;
   }
 
@@ -150,7 +150,7 @@ public:
    * Get the value of p_size_z
    * @return the value of p_size_z
    */
-  float getP_size_z ( )   {
+  double getP_size_z ( )   {
     return p_size_z;
   }
 
