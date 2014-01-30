@@ -15,7 +15,7 @@ initAttributes( Sensor(), 0, Particle());
    *  Constructor with all attributes or only given Sensor
    */
 
-Simulation::Simulation (Sensor sensor, float delta_position, Particle particle ) {
+Simulation::Simulation (Sensor sensor, double delta_position, Particle particle ) {
 initAttributes( sensor, delta_position, particle);
 }
 
@@ -46,7 +46,7 @@ void Simulation::printEnergies ( )
     std::vector<Pixel*> pixels = p_sensor.getP_sensorpixelpointer();
 
     for (unsigned int i = 0 ; i < pixels.size(); i++){
-         pixels[i]->toString();// i in 100 geänert!
+         pixels[i]->toString(false);// i in 100 geänert!
    }
 
 }
@@ -62,7 +62,7 @@ void Simulation::run (double start_energy, Vector3D start_position, Vector3D sta
 
 
         std::vector<Pixel*> pixels = p_sensor.getP_sensorpixelpointer();
-        float minimum = pixels[0]->getP_size_x( );
+        double minimum = pixels[0]->getP_size_x( );
 
 
         for (unsigned int i = 0 ; i < pixels.size(); i++){
@@ -82,7 +82,7 @@ void Simulation::run (double start_energy, Vector3D start_position, Vector3D sta
 
 
    // Energie die bei diesen Schritten an den Detektor abgegeben wird
-   float energydeposit = EnergyDeposition::getEnergyDeposition(p_delta_position);
+   double energydeposit = EnergyDeposition::getEnergyDeposition(p_delta_position);
 
 
 
@@ -116,7 +116,7 @@ void Simulation::run (double start_energy, Vector3D start_position, Vector3D sta
    /**
    *  private Funktion die von Konstruktoren aufgerufen wird
    */
-void Simulation::initAttributes ( Sensor sensor , float delta_position, Particle particle) {
+void Simulation::initAttributes ( Sensor sensor , double delta_position, Particle particle) {
     setP_sensor(sensor);
     setP_delta_position(delta_position);
     setP_particle(particle);

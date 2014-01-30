@@ -1,16 +1,12 @@
-
-using namespace std;
 #ifndef SIMULATION_H
 #define SIMULATION_H
 
 #include <string>
 #include <vector>
 
-#include "Particle.cpp"
-#include "Sensor.cpp"
-#include "EnergyDeposition.cpp"
-
-
+#include "Particle.h"
+#include "Sensor.h"
+#include "EnergyDeposition.h"
 
 /**
   * class Simulation
@@ -32,7 +28,7 @@ public:
    /**
    *Constructor all attributes or only given Sensor
    */
-  Simulation(Sensor, float, Particle);
+  Simulation(Sensor, double, Particle);
 
   Simulation(Sensor);
 
@@ -48,7 +44,7 @@ public:
    //
 
   Sensor p_sensor;
-  float p_delta_position;
+  double p_delta_position;
   Particle p_particle;
 
   //
@@ -58,7 +54,7 @@ public:
   /**
    * private Funktion die vom Konstruktor aufgerufen wird
    */
-  void initAttributes (Sensor , float, Particle) ;
+  void initAttributes (Sensor , double, Particle) ;
 
   public:
   /**
@@ -116,7 +112,7 @@ public:
    * Set the value of p_delta_position
    * @param new_var the new value of p_delta_position
    */
-  void setP_delta_position ( float new_var )   {
+  void setP_delta_position ( double new_var )   {
       p_delta_position = new_var;
   }
 
@@ -124,7 +120,7 @@ public:
    * Get the value of p_delta_position
    * @return the value of p_delta_position
    */
-  float getP_delta_position ( )   {
+  double getP_delta_position ( )   {
     return p_delta_position;
   }
 

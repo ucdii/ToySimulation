@@ -1,5 +1,8 @@
 #include "Vector3D.h"
 
+#include <iostream>
+using namespace std;
+
 // Constructors/Destructors
 //
 
@@ -24,20 +27,17 @@ Vector3D::~Vector3D ( ) { }
 
 
    /**
-   *  public Funktion die einen Vektor auf die länge 1 normiert
+   *  public Funktion die einen Vektor auf die Länge 1 normiert
    */
-Vector3D Vector3D::norm() {
-    if(x ==0 && y == 0 && z == 0)
-    {cout << "Direction is null vektor you cant find a norm. Exit Programm"<< endl;
-    exit(0);
-    }
-    else{
-    double norm =sqrt(x*x+y*y+z*z);
-    double newX = x/norm;
-    double newY = y/norm;
-    double newZ = z/norm;
-    return Vector3D(newX, newY, newZ);
-    }
+Vector3D Vector3D::norm()
+{
+	double norm2 = x*x+y*y+z*z;
+	if (norm2 == 0.f) return Vector3D(1,0,0);
+	auto norm = sqrt(norm2);
+	double newX = x/norm;
+	double newY = y/norm;
+	double newZ = z/norm;
+	return Vector3D(newX, newY, newZ);
 }
 
    /**

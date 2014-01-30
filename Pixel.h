@@ -30,13 +30,13 @@ public:
   /**
    * Constructor without Energy
    */
-   Pixel (float p_position_x,float p_position_y, float p_size_x, float p_size_y );
+   Pixel (double p_position_x,double p_position_y, double p_size_x, double p_size_y );
 
    /**
    * Constructor with Energy
    */
 
-   Pixel (float p_position_x,float p_position_y, float p_size_x, float p_size_y, float energy );
+   Pixel (double p_position_x,double p_position_y, double p_size_x, double p_size_y, double energy );
 
   /**
    * Empty Destructor
@@ -48,12 +48,12 @@ private:
   // Private attributes
   //
 
-  float p_position_x; // x Position des Pixels
-  float p_position_y; // y Position des Pixels
-  float p_size_x; // Breite in x
-  float p_size_y; // Breite in y
+  double p_position_x; // x Position des Pixels
+  double p_position_y; // y Position des Pixels
+  double p_size_x; // Breite in x
+  double p_size_y; // Breite in y
   std::vector<Pixel*> p_neighbourspixelpointer; // vector in dem Pointer auf alle Nachtbarn stehen
-  float p_energy; // positionierte Energie in diesem vector
+  double p_energy; // positionierte Energie in diesem vector
 
   //
   //Private Functions
@@ -61,7 +61,7 @@ private:
   /**
    * Wird von Konstruktoren aufgerufen
    */
-   void initAttributes ( float p_position_x,float p_position_y, float p_size_x, float p_size_y, float energy) ;
+   void initAttributes ( double p_position_x,double p_position_y, double p_size_x, double p_size_y, double energy) ;
 
 public:
 
@@ -72,7 +72,7 @@ public:
    *Addiert energy auf den vorhandenen p_energy Wert
    * @param  energy
    */
-  void addP_energy(float energy);
+  void addP_energy(double energy);
 
   //
   // Private attribute accessor methods
@@ -81,7 +81,7 @@ public:
    * Set the value of p_position_x
    * @param new_var the new value of p_position_x
    */
-  void setP_position_x ( float new_var )   {
+  void setP_position_x ( double new_var )   {
       p_position_x = new_var;
   }
 
@@ -89,7 +89,7 @@ public:
    * Get the value of p_position_x
    * @return the value of p_position_x
    */
-  float getP_position_x ( )   {
+  double getP_position_x ( )   {
     return p_position_x;
   }
 
@@ -97,7 +97,7 @@ public:
    * Set the value of p_position_y
    * @param new_var the new value of p_position_y
    */
-  void setP_position_y ( float new_var )   {
+  void setP_position_y ( double new_var )   {
       p_position_y = new_var;
   }
 
@@ -105,7 +105,7 @@ public:
    * Get the value of p_position_y
    * @return the value of p_position_y
    */
-  float getP_position_y ( )   {
+  double getP_position_y ( )   {
     return p_position_y;
   }
 
@@ -113,7 +113,7 @@ public:
    * Set the value of p_size_x
    * @param new_var the new value of p_size_x
    */
-  void setP_size_x ( float new_var )   {
+  void setP_size_x ( double new_var )   {
       p_size_x = new_var;
   }
 
@@ -121,7 +121,7 @@ public:
    * Get the value of p_size_x
    * @return the value of p_size_x
    */
-  float getP_size_x ( )   {
+  double getP_size_x ( )   {
     return p_size_x;
   }
 
@@ -129,7 +129,7 @@ public:
    * Set the value of p_size_y
    * @param new_var the new value of p_size_y
    */
-  void setP_size_y ( float new_var )   {
+  void setP_size_y ( double new_var )   {
       p_size_y = new_var;
   }
 
@@ -137,7 +137,7 @@ public:
    * Get the value of p_size_y
    * @return the value of p_size_y
    */
-  float getP_size_y ( )   {
+  double getP_size_y ( )   {
     return p_size_y;
   }
 
@@ -161,7 +161,7 @@ public:
    * Set the value of p_energy
    * @param new_var the new value of p_energy
    */
-  void setP_energy ( float new_var )   {
+  void setP_energy ( double new_var )   {
       p_energy = new_var;
   }
 
@@ -169,7 +169,7 @@ public:
    * Get the value of p_energy
    * @return the value of p_energy
    */
-  float getP_energy ( )   {
+  double getP_energy ( )   {
     return p_energy;
   }
 
@@ -177,8 +177,9 @@ public:
   //
   //Ausgabe aller wichtigen Daten in Konsole x,y delta x,y  und Energie
   //
-  void toString(){
-    cout << "x:" << p_position_x << "  DeltaX:" << p_size_x  <<"  y:" << p_position_y <<"   DeltaY:" <<p_size_y << "  Energie:"<< p_energy<< endl;
+  void toString(bool printIfZero = true){
+	if (!printIfZero && p_energy == 0) return;
+    cout << "[" << p_position_x << "," << p_position_y << "] [" << p_size_x << "," << p_size_y  << "] -> "<< p_energy<< endl;
 }
 
 

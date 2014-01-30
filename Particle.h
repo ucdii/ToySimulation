@@ -3,8 +3,7 @@
 #define PARTICLE_H
 
 #include <string>
-//#include vector
-#include "Vector3D.cpp" // tut nicht das was ich will Problem Vector3D::Vector3D(double, double, double) ist nicht deffinier? ebenso Klassenkonsturktor und Vernichtung!
+#include "Vector3D.h"
 
 
   /**

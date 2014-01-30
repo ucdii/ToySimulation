@@ -13,7 +13,7 @@ initAttributes(0,0,0,0); // letzer Wert wahrscheinlich ungünstig gewählt?
    /**
    *  Constructor
    */
-Sensor::Sensor(float size_x, float size_y, float size_z, unsigned int N){
+Sensor::Sensor(double size_x, double size_y, double size_z, unsigned int N){
 initAttributes(size_x,size_y,size_z, N);
 }
    /**
@@ -38,14 +38,14 @@ Pixel * Sensor::getPixel(Vector3D position)
         {
 
             //Abmessugnen des betrachteten Pixels
-            float xmin = p_sensorpixelpointer[i]->getP_position_x();
-            float ymin = p_sensorpixelpointer[i]->getP_position_y();
-            float xmax = xmin + p_sensorpixelpointer[i]->getP_size_x();
-            float ymax = ymin + p_sensorpixelpointer[i]->getP_size_y();
+            double xmin = p_sensorpixelpointer[i]->getP_position_x();
+            double ymin = p_sensorpixelpointer[i]->getP_position_y();
+            double xmax = xmin + p_sensorpixelpointer[i]->getP_size_x();
+            double ymax = ymin + p_sensorpixelpointer[i]->getP_size_y();
 
             //Ort des 3DVektors
-            float x = position.getX();
-            float y = position.getY();
+            double x = position.getX();
+            double y = position.getY();
             //Schaut ob projektion von 3D Vektor auf x-y ebene in betrachtetem Pixel ist
             if(xmin<= x && xmax >= x&& ymin <=y && ymax >= y) {
                 return (p_sensorpixelpointer[i]);
@@ -56,7 +56,7 @@ Pixel * Sensor::getPixel(Vector3D position)
 return NULL;
     }
 
-
+	return NULL;
 }
 
 
@@ -68,9 +68,9 @@ return NULL;
 bool Sensor::withinSensor(Vector3D position)
 {
         // Position
-        float x = position.getX();
-        float y = position.getY();
-        float z = position.getZ();
+        double x = position.getX();
+        double y = position.getY();
+        double z = position.getZ();
 
         if(x<= p_size_x && y<= p_size_y && z <= p_size_z){
             return true;}
@@ -85,20 +85,20 @@ void Sensor::calculateNeighbours(Pixel *pixel1, unsigned int size_sensorpointer)
 {
         // Eckdaten des Pixel von dem die Nachbarn bestimmt werden sollen
 
-        float x1 = pixel1->getP_position_x();
-        float x2 = x1+pixel1->getP_size_x();
-        float y1 = pixel1->getP_position_y();
-        float y2 = y1+pixel1->getP_size_y();
+        double x1 = pixel1->getP_position_x();
+        double x2 = x1+pixel1->getP_size_x();
+        double y1 = pixel1->getP_position_y();
+        double y2 = y1+pixel1->getP_size_y();
 
 
         // Vergleich mit allen anderen vorhandenen Pixeln im Sensor
         for(unsigned int i = 0 ; i < size_sensorpointer; i++)
         {
         // Daten des zu vergleichenden Pixels
-        float xmin = p_sensorpixelpointer[i]->getP_position_x();
-        float ymin = p_sensorpixelpointer[i]->getP_position_y();
-        float xmax = p_sensorpixelpointer[i]->getP_size_x();
-        float ymax = p_sensorpixelpointer[i]->getP_size_y();
+        double xmin = p_sensorpixelpointer[i]->getP_position_x();
+        double ymin = p_sensorpixelpointer[i]->getP_position_y();
+        double xmax = p_sensorpixelpointer[i]->getP_size_x();
+        double ymax = p_sensorpixelpointer[i]->getP_size_y();
 
 
          //Betrachtetes Pixel auf x1 Ebene? und zwischen y werten siehe unten
@@ -129,7 +129,7 @@ void Sensor::calculateNeighbours(Pixel *pixel1, unsigned int size_sensorpointer)
    *  private Funktion die vom Constructor aufgerufen wird
    */
 
-void Sensor::initAttributes (float size_x, float size_y, float size_z, unsigned int N ) {
+void Sensor::initAttributes (double size_x, double size_y, double size_z, unsigned int N ) {
     setP_size_x(size_x);
     setP_size_y(size_y);
     setP_size_z(size_z);
