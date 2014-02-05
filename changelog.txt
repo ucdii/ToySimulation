@@ -16,7 +16,9 @@
 - changed var names
 
 2014-02-05:
-- current execution time: ~517629us
+- define use case: !!
+- current execution Performance:
+	-> start point: release, win32: 1612us
+- after Vec2 - refactoring: ~517629us
+- after optimization: ~ 1000us <- specify use case first!
 
-Performance:
-- start point: release, win32: 1612us
