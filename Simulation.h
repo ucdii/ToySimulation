@@ -69,7 +69,7 @@ public:
    * @param  start_position
    * @param  start_direction
    */
-  void run (double start_energy, Vector3D start_position, Vector3D start_direction );
+  void run (double start_energy, Vec2 start_position, Vec2 start_direction );
 
 
 

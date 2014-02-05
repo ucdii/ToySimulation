@@ -29,10 +29,10 @@
     <ClCompile Include="..\Simulation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vector3D.cpp">
+    <ClCompile Include="..\Timer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Timer.cpp">
+    <ClCompile Include="..\Vec2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -52,10 +52,10 @@
     <ClInclude Include="..\Simulation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Vector3D.h">
+    <ClInclude Include="..\Timer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Timer.h">
+    <ClInclude Include="..\Vec2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

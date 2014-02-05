@@ -34,7 +34,7 @@ Simulation::~Simulation ( ) { }
 void Simulation::printSensorProperties ( )
 {
     cout << "Sensor Properties:" << endl;
-    cout << "x:" << p_sensor.getP_size_x() << "  y=" << p_sensor.getP_size_y()<< "  z=" << p_sensor.getP_size_z()<< endl;
+    cout << "x:" << p_sensor.getSize().getX() << "  y=" << p_sensor.getSize().getY()<< endl;
 }
 
    /**
@@ -54,7 +54,7 @@ void Simulation::printEnergies ( )
    /**
    *  public Funktion die die Simuation startet Ihr muss eine Startenergie, -Position und Richtung angegeben werden
    */
-void Simulation::run (double start_energy, Vector3D start_position, Vector3D start_direction ){
+void Simulation::run (double start_energy, Vec2 start_position, Vec2 start_direction ){
   // Deklaration unseres Starktpartikels
   Particle teilchen = Particle(start_energy, start_position, start_direction) ;
 
@@ -62,15 +62,15 @@ void Simulation::run (double start_energy, Vector3D start_position, Vector3D sta
 
 
         std::vector<Pixel*> pixels = p_sensor.getP_sensorpixelpointer();
-        double minimum = pixels[0]->getP_size_x( );
+        double minimum = pixels[0]->getSize().getX( );
 
 
         for (unsigned int i = 0 ; i < pixels.size(); i++){
-                if (pixels[i]->getP_size_x() < minimum) {
-                    minimum = pixels[i]->getP_size_x();
+                if (pixels[i]->getSize().getX() < minimum) {
+                    minimum = pixels[i]->getSize().getX();
                 }
-                if (pixels[i]->getP_size_y() < minimum) {
-                    minimum = pixels[i]->getP_size_y();
+                if (pixels[i]->getSize().getY() < minimum) {
+                    minimum = pixels[i]->getSize().getY();
                 }
         }
 

@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 
 	if (!noArgs && !allArgs) return ExitWithError("Please provide either none or all arguments:\nVec3 PixelPosition, Vec3 PixelDirection, double Energy");
 	
-	   double energy, position_x, position_y, position_z, direction_x, direction_y, direction_z;
+	double energy, position_x, position_y, direction_x, direction_y;
 
 	if (noArgs)
 	{
@@ -29,28 +29,26 @@ int main(int argc, char *argv[])
 		cout << "Choose Start Energy, Position and Direction of the Particle" << endl;
 		cout << "Enter the Energy: ";
 		cin >> energy;
-		cout << "Enter the Position of the Particle (x y z):";
-		cin >> position_x >> position_y >> position_z;
+		cout << "Enter the Position of the Particle (x y):";
+		cin >> position_x >> position_y;
 		cout << endl;
 		
-		cout << "Enter the Direction of the Particle (x y z):";
-		cin >> direction_x >> direction_y >> direction_z;
+		cout << "Enter the Direction of the Particle (x y):";
+		cin >> direction_x >> direction_y;
 	}
 	else
 	{
 		sscanf(argv[1],"%lf",&energy);
 		sscanf(argv[2],"%lf",&position_x);
 		sscanf(argv[3],"%lf",&position_y);
-		sscanf(argv[4],"%lf",&position_z);
 		sscanf(argv[5],"%lf",&direction_x);
 		sscanf(argv[6],"%lf",&direction_y);
-		sscanf(argv[7],"%lf",&direction_z);
 	}
 
-	printf("Energy=%.5f Pos=[%.2f/%.2f/%.2f] Dir=[%.2f/%.2f/%.2f]\n", energy, position_x, position_y, position_z, direction_x, direction_y, direction_z);
+	printf("Energy=%.5f Pos=[%.2f/%.2f] Dir=[%.2f/%.2f]\n", energy, position_x, position_y, direction_x, direction_y);
 
-	Vector3D position = Vector3D(position_x, position_y, position_z);
-	Vector3D direction = Vector3D(direction_x, direction_y, direction_z);
+	Vec2 position = Vec2(position_x, position_y);
+	Vec2 direction = Vec2(direction_x, direction_y);
 
     // Einlesen der Pixel aus Sensordaten.txt
     ifstream Sensordaten;
@@ -67,14 +65,13 @@ int main(int argc, char *argv[])
     // überprüft ob Datei geöffnet werden kann
     // Anzahl der Pixel die als erstes ind er Tabelle gegeben werden
 
-    double sensor_x, sensor_y, sensor_z;
+    double sensor_x, sensor_y;
     Sensordaten >> sensor_x;
     Sensordaten >> sensor_y;
-    Sensordaten >> sensor_z;
 
     cout << "Sensor Properties are being read ... "<< endl;
     // Definition der Sensor Properties
-    sensor = Sensor(sensor_x, sensor_y, sensor_z, numPixels);
+    sensor = Sensor(Vec2(sensor_x, sensor_y), numPixels);
 
     for(unsigned int i = 1; i <= numPixels; i++){
         // Deklaration der einzelnen Elemente die in den Pixel Array geschrieben werden sollen
@@ -85,13 +82,13 @@ int main(int argc, char *argv[])
         Sensordaten >> p_size_x;
         Sensordaten >> p_size_y;
         // Erstellen des neuen Pixels
-        Pixel *pixel = new Pixel(p_x, p_y, p_size_x, p_size_y);
+        Pixel *pixel = new Pixel(Vec2(p_x, p_y), Vec2(p_size_x,p_size_y));
         // Hinzufügen des Pixels und Überprüfung nächster Nachbarn
         sensor.addP_sensorpixelpointer(pixel);
     }
     cout << "Data file has been loaded."<< endl;
 
-    Sensordaten.close();  
+    Sensordaten.close();
 
     Simulation simulation = Simulation(sensor);
     //Simulation wird mit Funktion run durchgeführt
@@ -99,10 +96,7 @@ int main(int argc, char *argv[])
 	Timer simulationTime;
 	simulationTime.start();
 
-	for (int i=1; i<100; i++)
-	{
-		simulation.run(energy, position, direction);
-	}
+	simulation.run(energy, position, direction);
 
 	simulationTime.stop();
 

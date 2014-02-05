@@ -10,6 +10,9 @@
 - added commandline argv option for more efficient program usage
 - fixed various typos
 - added Timer class to perform time measurements
+- removed 3rd dimension :(
+- changed function Parameters from ClassName to ClassName& where applicable
+- removed 'initAttributes'
 
 Performance:
 - start point: release, win32: 1612us

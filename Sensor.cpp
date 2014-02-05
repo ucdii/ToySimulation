@@ -6,15 +6,12 @@
    */
 
 
-Sensor::Sensor ( ) {
-initAttributes(0,0,0,0); // letzer Wert wahrscheinlich ungünstig gewählt?
-}
-
    /**
    *  Constructor
    */
-Sensor::Sensor(double size_x, double size_y, double size_z, unsigned int N){
-initAttributes(size_x,size_y,size_z, N);
+Sensor::Sensor(Vec2& pSize, unsigned int N) : size(pSize)
+{
+	p_sensorpixelpointer.reserve(N);
 }
    /**
    *  Destructor
@@ -23,10 +20,10 @@ Sensor::~Sensor ( ) { }
 
 
    /**
-   *  public Funktion gibt Pointer auf Pixel des Sensors zurück indem der gegebene Vector3D liegt
+   *  public Funktion gibt Pointer auf Pixel des Sensors zurück indem der gegebene Vec2 liegt
    */
 
-Pixel * Sensor::getPixel(Vector3D position)
+Pixel * Sensor::getPixel(Vec2& position)
 {
 
     // überprüft ob position im Sensor ist  sonst wird NULL zurückgegeben
@@ -38,10 +35,10 @@ Pixel * Sensor::getPixel(Vector3D position)
         {
 
             //Abmessugnen des betrachteten Pixels
-            double xmin = p_sensorpixelpointer[i]->getP_position_x();
-            double ymin = p_sensorpixelpointer[i]->getP_position_y();
-            double xmax = xmin + p_sensorpixelpointer[i]->getP_size_x();
-            double ymax = ymin + p_sensorpixelpointer[i]->getP_size_y();
+			double xmin = p_sensorpixelpointer[i]->getPosition().getX();
+            double ymin = p_sensorpixelpointer[i]->getPosition().getY();
+            double xmax = xmin + p_sensorpixelpointer[i]->getSize().getX();
+            double ymax = ymin + p_sensorpixelpointer[i]->getSize().getY();
 
             //Ort des 3DVektors
             double x = position.getX();
@@ -65,14 +62,13 @@ return NULL;
    *  private Funktion überprüft ob position noch innerhalb des Sensors liegt
    */
 
-bool Sensor::withinSensor(Vector3D position)
+bool Sensor::withinSensor(Vec2& position)
 {
         // Position
         double x = position.getX();
         double y = position.getY();
-        double z = position.getZ();
 
-        if(x<= p_size_x && y<= p_size_y && z <= p_size_z){
+        if(x<= position.getX() && y<= position.getY()){
             return true;}
         else{
             cout << " Particle moved out of Sensor"<< endl;
@@ -85,20 +81,20 @@ void Sensor::calculateNeighbours(Pixel *pixel1, unsigned int size_sensorpointer)
 {
         // Eckdaten des Pixel von dem die Nachbarn bestimmt werden sollen
 
-        double x1 = pixel1->getP_position_x();
-        double x2 = x1+pixel1->getP_size_x();
-        double y1 = pixel1->getP_position_y();
-        double y2 = y1+pixel1->getP_size_y();
+		double x1 = pixel1->getPosition().getX();
+        double x2 = x1+pixel1->getSize().getX();
+        double y1 = pixel1->getPosition().getY();
+        double y2 = y1+pixel1->getSize().getY();
 
 
         // Vergleich mit allen anderen vorhandenen Pixeln im Sensor
         for(unsigned int i = 0 ; i < size_sensorpointer; i++)
         {
         // Daten des zu vergleichenden Pixels
-        double xmin = p_sensorpixelpointer[i]->getP_position_x();
-        double ymin = p_sensorpixelpointer[i]->getP_position_y();
-        double xmax = p_sensorpixelpointer[i]->getP_size_x();
-        double ymax = p_sensorpixelpointer[i]->getP_size_y();
+        double xmin = p_sensorpixelpointer[i]->getPosition().getX();
+        double ymin = p_sensorpixelpointer[i]->getPosition().getY();
+        double xmax = p_sensorpixelpointer[i]->getSize().getX();
+        double ymax = p_sensorpixelpointer[i]->getSize().getY();
 
 
          //Betrachtetes Pixel auf x1 Ebene? und zwischen y werten siehe unten
@@ -125,14 +121,4 @@ void Sensor::calculateNeighbours(Pixel *pixel1, unsigned int size_sensorpointer)
         }
 }
 
-   /**
-   *  private Funktion die vom Constructor aufgerufen wird
-   */
-
-void Sensor::initAttributes (double size_x, double size_y, double size_z, unsigned int N ) {
-    setP_size_x(size_x);
-    setP_size_y(size_y);
-    setP_size_z(size_z);
-    p_sensorpixelpointer.reserve(N); // Reserviert N Pointer auf Pixel
-}
 
