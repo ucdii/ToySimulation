@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 #include "Pixel.h"
-#include "Vector3D.h"
+#include "Vec2.h"
 
 
 
@@ -23,15 +23,12 @@ public:
   //
 
 
-  /**
-   * Empty Constructor
-   */
-  Sensor ( );
+	Sensor() {}
 
   /**
    * Constructor
    */
-   Sensor(double p_size_x, double p_size_y, double  p_size_z, unsigned int N);
+   Sensor(Vec2& pSize, unsigned int N);
 
   /**
    * Empty Destructor
@@ -43,9 +40,7 @@ public:
    // Private attributes
    //
 
-  double p_size_x;
-  double p_size_y;
-  double p_size_z;
+  Vec2 size;
   std::vector<Pixel*> p_sensorpixelpointer;
 
 
@@ -57,7 +52,7 @@ public:
    * @return bool
    * @param  position
    */
-  bool withinSensor (Vector3D position );
+  bool withinSensor (Vec2& position );
 
 
   /**
@@ -69,7 +64,7 @@ public:
   /**
    * Wird von Konstruktoren verwendet
    */
-  void initAttributes ( double size_x, double size_y, double size_z, unsigned int N) ;
+  void initAttributes ( Vec2& size, unsigned int N) ;
 
 
 
@@ -80,7 +75,7 @@ public:
    * @param  position
    * @param  last_pixel
    */
-  Pixel * getPixel (Vector3D position);
+  Pixel * getPixel (Vec2& position);
 
   /**
    **************************************************************
@@ -107,57 +102,21 @@ public:
 
 
   /**
-   * Set the value of p_size_x
-   * @param new_var the new value of p_size_x
+   * Set the value of size
+   * @param new_var the new value of size
    */
-  void setP_size_x ( double new_var )   {
-      p_size_x = new_var;
+  void setSize ( Vec2&  pSize )   {
+      size = pSize;
   }
 
   /**
    * Get the value of p_size_x
    * @return the value of p_size_x
    */
-  double getP_size_x ( )   {
-    return p_size_x;
+  Vec2 getSize ( )   {
+    return size;
   }
 
-  /**
-   * Set the value of p_size_y
-   * @param new_var the new value of p_size_y
-   */
-  void setP_size_y ( double new_var )   {
-      p_size_y = new_var;
-  }
-
-  /**
-   * Get the value of p_size_y
-   * @return the value of p_size_y
-   */
-  double getP_size_y ( )   {
-    return p_size_y;
-  }
-
-  /**
-   * Set the value of p_size_z
-   * @param new_var the new value of p_size_z
-   */
-  void setP_size_z ( double new_var )   {
-      p_size_z = new_var;
-  }
-
-  /**
-   * Get the value of p_size_z
-   * @return the value of p_size_z
-   */
-  double getP_size_z ( )   {
-    return p_size_z;
-  }
-
-  /**
-   * Get p_sensorpixelpointer of privit attributes
-   * @return the value of p_size_z
-   */
  std::vector<Pixel*> getP_sensorpixelpointer (){
       return (p_sensorpixelpointer);
   }

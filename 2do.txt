@@ -1,2 +1,6 @@
-- fix usage of using namespace std in whole project
 - unit tests for vector class Members (or better: use public vector implementation)
+* REAL energy deposit formula!
+- Timer -> Profiler
+* the actual optimization (after UT coverage)
+- add performance tests for various SensorDateien
+* solve O(2)

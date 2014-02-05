@@ -22,3 +22,5 @@ private:
 	long startTime_;
 	long executionTime_;
 };
+
+//static Timer myTimer;

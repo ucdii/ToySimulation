@@ -1,16 +1,16 @@
 
-#ifndef VECTOR3D_H
-#define VECTOR3D_H
+#ifndef VECT2_H
+#define VECT2_H
 
 #include <string>
 #include <math.h>
 
 /**
-  * class Vector3D
+  * class Vec2
   *
   */
 
-class Vector3D
+class Vec2
 {
 public:
   //
@@ -21,18 +21,18 @@ public:
   /**
    * Empty Constructor
    */
-  Vector3D ();
+  Vec2 ();
 
 
   /**
    * Constructor
    */
-  Vector3D (double x, double y, double z);
+  Vec2 (double x, double y);
 
   /**
    * Empty Destructor
    */
-  virtual ~Vector3D ( );
+  virtual ~Vec2 ( );
 
   private:
     //
@@ -41,7 +41,6 @@ public:
 
   double x;
   double y;
-  double z;
 
   //
   //Private Functions
@@ -50,17 +49,15 @@ public:
   /**
    * private Funktion die vom Konstruktor aufgerufen wird
    */
-
-  void initAttributes (double x, double y, double z) ;
-
+  
 
   public:
 
   /**
    * Gibt normierte Kopie zurück.
-   * @return Vector3D
+   * @return Vec2
    */
-  Vector3D norm ( );
+  Vec2 norm ( );
 
   //
   // Private attribute accessor methods
@@ -99,23 +96,6 @@ public:
     return y;
   }
 
-  /**
-   * Set the value of z
-   * @param new_var the new value of z
-   */
-  void setZ ( double new_var )   {
-      z = new_var;
-  }
-
-  /**
-   * Get the value of z
-   * @return the value of z
-   */
-  double getZ ( )   {
-    return z;
-  }
-
-
 };
 
-#endif // VECTOR3D_H
+#endif // VECT2_H

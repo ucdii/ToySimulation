@@ -4,6 +4,7 @@
 
 #include <string>
 #include <vector>
+#include "Vec2.h"
 #include <iostream>
 
 using namespace std;
@@ -22,128 +23,52 @@ public:
    //Constuctor/Destrucor
    //
 
-   /**
-   * Empty Constructor
-   */
-  Pixel ( );
-
   /**
    * Constructor without Energy
    */
-   Pixel (double p_position_x,double p_position_y, double p_size_x, double p_size_y );
+   Pixel (Vec2& position, Vec2& size);
 
    /**
    * Constructor with Energy
    */
 
-   Pixel (double p_position_x,double p_position_y, double p_size_x, double p_size_y, double energy );
+   Pixel (Vec2& position, Vec2& size, double energy );
+
+   Vec2 getPosition();
+   Vec2 getSize();
 
   /**
    * Empty Destructor
    */
   virtual ~Pixel ( );
 
+  bool getPositionIsInside(Vec2& pos);
+
 private:
   //
   // Private attributes
   //
 
-  double p_position_x; // x Position des Pixels
-  double p_position_y; // y Position des Pixels
-  double p_size_x; // Breite in x
-  double p_size_y; // Breite in y
+  Vec2 position, size;
   std::vector<Pixel*> p_neighbourspixelpointer; // vector in dem Pointer auf alle Nachtbarn stehen
-  double p_energy; // positionierte Energie in diesem vector
+  double energy; // positionierte Energie in diesem vector
 
   //
   //Private Functions
   //
-  /**
-   * Wird von Konstruktoren aufgerufen
-   */
-   void initAttributes ( double p_position_x,double p_position_y, double p_size_x, double p_size_y, double energy) ;
-
+  
 public:
 
   //
   // Needed funktions
   //
    /**
-   *Addiert energy auf den vorhandenen p_energy Wert
+   *Addiert energy auf den vorhandenen energy Wert
    * @param  energy
    */
   void addP_energy(double energy);
 
-  //
-  // Private attribute accessor methods
-  //
-  /**
-   * Set the value of p_position_x
-   * @param new_var the new value of p_position_x
-   */
-  void setP_position_x ( double new_var )   {
-      p_position_x = new_var;
-  }
-
-  /**
-   * Get the value of p_position_x
-   * @return the value of p_position_x
-   */
-  double getP_position_x ( )   {
-    return p_position_x;
-  }
-
-  /**
-   * Set the value of p_position_y
-   * @param new_var the new value of p_position_y
-   */
-  void setP_position_y ( double new_var )   {
-      p_position_y = new_var;
-  }
-
-  /**
-   * Get the value of p_position_y
-   * @return the value of p_position_y
-   */
-  double getP_position_y ( )   {
-    return p_position_y;
-  }
-
-  /**
-   * Set the value of p_size_x
-   * @param new_var the new value of p_size_x
-   */
-  void setP_size_x ( double new_var )   {
-      p_size_x = new_var;
-  }
-
-  /**
-   * Get the value of p_size_x
-   * @return the value of p_size_x
-   */
-  double getP_size_x ( )   {
-    return p_size_x;
-  }
-
-  /**
-   * Set the value of p_size_y
-   * @param new_var the new value of p_size_y
-   */
-  void setP_size_y ( double new_var )   {
-      p_size_y = new_var;
-  }
-
-  /**
-   * Get the value of p_size_y
-   * @return the value of p_size_y
-   */
-  double getP_size_y ( )   {
-    return p_size_y;
-  }
-
-
-
-   /**
+     /**
    **************************************************************
    **************************************************************
    *Schreibt newp_neighboursPixel in P_neighbourspixelpointer   *
@@ -158,19 +83,19 @@ public:
   }
 
   /**
-   * Set the value of p_energy
-   * @param new_var the new value of p_energy
+   * Set the value of energy
+   * @param new_var the new value of energy
    */
   void setP_energy ( double new_var )   {
-      p_energy = new_var;
+      energy = new_var;
   }
 
   /**
-   * Get the value of p_energy
-   * @return the value of p_energy
+   * Get the value of energy
+   * @return the value of energy
    */
   double getP_energy ( )   {
-    return p_energy;
+    return energy;
   }
 
 
@@ -178,8 +103,8 @@ public:
   //Ausgabe aller wichtigen Daten in Konsole x,y delta x,y  und Energie
   //
   void toString(bool printIfZero = true){
-	if (!printIfZero && p_energy == 0) return;
-    cout << "[" << p_position_x << "," << p_position_y << "] [" << p_size_x << "," << p_size_y  << "] -> "<< p_energy<< endl;
+	if (!printIfZero && energy == 0) return;
+	cout << "[" << position.getX() << "," << position.getY() << "] [" << size.getX() << "," << size.getY()  << "] -> "<< energy<< endl;
 }
 
 

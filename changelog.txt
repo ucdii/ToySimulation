@@ -11,5 +11,15 @@
 - fixed various typos
 - added Timer class to perform time measurements
 
-Performance:
-- start point: release, win32: 1612us
+2014-02-05:
+- removed 3rd dimension :(
+- changed function Parameters from ClassName to ClassName& where applicable
+- removed 'initAttributes'
+- changed var names
+- monte carlo optimization
+- define use case: !!
+- current execution Performance:
+	-> start point: release, win32: 1612us
+- after Vec2 - refactoring: ~517629us
+- after optimization: ~ 1000us <- specify use case first!
+
