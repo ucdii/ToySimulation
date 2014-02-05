@@ -35,10 +35,15 @@ Pixel * Sensor::getPixel(Vec2& position)
     //Möglich: erst Nachbarn des letzten Pixels überprüfen! hier nicht gemacht!!
 
         unsigned int size_sensorpointer = p_sensorpixelpointer.size();
+
+		static auto t(p_sensorpixelpointer[0]);
+
+		if (t->getPositionIsInside(position)) return t;
+
         for(unsigned int i = 0; i< size_sensorpointer; i++)
         {
-
-			if (p_sensorpixelpointer[i]->getPositionIsInside(position)) return p_sensorpixelpointer[i];
+			
+			if (p_sensorpixelpointer[i]->getPositionIsInside(position)) return t = p_sensorpixelpointer[i];
 
         }
     } 
