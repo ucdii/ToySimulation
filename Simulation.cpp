@@ -74,19 +74,11 @@ void Simulation::run (double start_energy, Vec2 start_position, Vec2 start_direc
                 }
         }
 
-
-
         // Iterationsschritte werden auf 1/20 der kleinsten Seitenlänge gesetzt
         p_delta_position = minimum/20;
 
-
-
    // Energie die bei diesen Schritten an den Detektor abgegeben wird
    double energydeposit = EnergyDeposition::getEnergyDeposition(p_delta_position);
-
-
-
-
 
   // Teilchen wird bewegt bis Energie 0 ist
   while(teilchen.getP_energy() >0)

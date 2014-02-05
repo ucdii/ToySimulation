@@ -5,7 +5,7 @@
    * Constructor
    */
 
-Pixel::Pixel ( Vec2& pPosition, Vec2& pSize ) : position(pPosition), size(pSize)  {}
+Pixel::Pixel ( Vec2& pPosition, Vec2& pSize ) : position(pPosition), size(pSize) , energy(0) {}
 Pixel::Pixel ( Vec2& pPosition, Vec2& pSize, double pEnergy) : position(pPosition), size(pSize), energy(pEnergy) {}
 
    /**
@@ -22,8 +22,7 @@ Vec2 Pixel::getSize() { return size; }
    * Funktion addiert energy auf den privaten Wert energy der Pixelklasse
    */
 
-void Pixel::addP_energy(double energy){
-   double new_energy = energy+energy ;//getP_energy+energy;
-    setP_energy(new_energy);
+void Pixel::addP_energy(double pEnergy){
+	energy += pEnergy;
 }
 

@@ -65,9 +65,10 @@ int main(int argc, char *argv[])
     // überprüft ob Datei geöffnet werden kann
     // Anzahl der Pixel die als erstes ind er Tabelle gegeben werden
 
-    double sensor_x, sensor_y;
+    double sensor_x, sensor_y, sensor_z;
     Sensordaten >> sensor_x;
     Sensordaten >> sensor_y;
+	Sensordaten >> sensor_z; // ATTENTION: this is ignored
 
     cout << "Sensor Properties are being read ... "<< endl;
     // Definition der Sensor Properties
