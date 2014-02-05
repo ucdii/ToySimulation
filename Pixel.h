@@ -42,6 +42,8 @@ public:
    */
   virtual ~Pixel ( );
 
+  bool getPositionIsInside(Vec2& pos);
+
 private:
   //
   // Private attributes

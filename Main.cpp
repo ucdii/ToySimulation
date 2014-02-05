@@ -7,8 +7,8 @@
 #define PROGRAM_EXIT_OK 0
 #define PROGRAM_EXIT_ERROR 1
 
-#define DO_MANY_ITERATIONS
-#define N_ITERATIONS 10
+//#define DO_MANY_ITERATIONS
+#define N_ITERATIONS 1
 
 int ExitWithError(const std::string message)
 {
@@ -151,7 +151,7 @@ int main(int argc, char *argv[])
 
 	cout << "N Iterations=" << N_ITERATIONS << endl;
 	//printf("myTimer took %i us\n",myTimer.getExecutionTime()/N_ITERATIONS);
-	printf("Simulation took %i us\n",simulationTime.getExecutionTime()/N_ITERATIONS);
+	printf("Simulation took %i us\n",simulationTime.getExecutionTime());
 
 
 	delete simulation;

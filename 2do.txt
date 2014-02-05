@@ -3,3 +3,4 @@
 - Timer -> Profiler
 - the actual optimization (after UT coverage)
 - add performance tests for various SensorDateien
+- solve O(2)

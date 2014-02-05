@@ -38,20 +38,8 @@ Pixel * Sensor::getPixel(Vec2& position)
         for(unsigned int i = 0; i< size_sensorpointer; i++)
         {
 
-            //Abmessugnen des betrachteten Pixels
-			double xmin = p_sensorpixelpointer[i]->getPosition().getX();
-            double ymin = p_sensorpixelpointer[i]->getPosition().getY();
-            double xmax = xmin + p_sensorpixelpointer[i]->getSize().getX();
-            double ymax = ymin + p_sensorpixelpointer[i]->getSize().getY();
+			if (p_sensorpixelpointer[i]->getPositionIsInside(position)) return p_sensorpixelpointer[i];
 
-            //Ort des 3DVektors
-            double x = position.getX();
-            double y = position.getY();
-            //Schaut ob projektion von 3D Vektor auf x-y ebene in betrachtetem Pixel ist
-            if(xmin<= x && xmax >= x&& ymin <=y && ymax >= y) {
-                return (p_sensorpixelpointer[i]);
-
-            }
         }
     } 
 
