@@ -23,7 +23,7 @@ public:
   /**
    * Constructor
    */
-  Particle ( double P_energy, Vec2 position, Vec2 direction );
+  Particle ( double P_energy, Vec2& position, Vec2& direction );
 
   /**
    * Empty Constructor
@@ -51,7 +51,7 @@ public:
   /**
    * Wird von Konstruktoren aufgerufen
    */
-  void initAttributes ( double P_energy, Vec2 position, Vec2 direction ) ;
+  void initAttributes ( double P_energy, Vec2& position, Vec2& direction ) ;
 
 public:
 
@@ -94,7 +94,7 @@ public:
    * Set the value of position
    * @param new_var the new value of position
    */
-  void setP_position ( Vec2 new_var )   {
+  void setP_position ( Vec2& new_var )   {
       position = new_var;
   }
 
@@ -110,7 +110,7 @@ public:
    * Set the value of direction
    * @param new_var the new value of direction
    */
-  void setP_direction ( Vec2 new_var )   {
+  void setP_direction ( Vec2& new_var )   {
       direction = new_var;
   }
 

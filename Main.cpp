@@ -1,11 +1,14 @@
 #include <iostream>
 #include <fstream>
 
-#include "Simulation.h"
+#include "simulation.h"
 #include "Timer.h"
 
 #define PROGRAM_EXIT_OK 0
 #define PROGRAM_EXIT_ERROR 1
+
+#define DO_MANY_ITERATIONS
+#define N_ITERATIONS 10
 
 int ExitWithError(const std::string message)
 {
@@ -91,20 +94,65 @@ int main(int argc, char *argv[])
 
     Sensordaten.close();
 
-    Simulation simulation = Simulation(sensor);
-    //Simulation wird mit Funktion run durchgeführt
+
+	Simulation* simulation = nullptr;
 
 	Timer simulationTime;
+
 	simulationTime.start();
 
-	simulation.run(energy, position, direction);
+
+#ifdef DO_MANY_ITERATIONS
+
+	for (int i = 0;i<N_ITERATIONS;i++)
+	{
+
+#endif
+
+		delete simulation;
+
+		simulation = new Simulation(sensor);
+		//Simulation wird mit Funktion run durchgeführt
+
+		
+
+		simulation->run(energy, position, direction);
+
+		
+
+#ifdef DO_MANY_ITERATIONS
+
+	}
+
+#endif
 
 	simulationTime.stop();
 
     // Ausgabe der Sensor Properties
-    simulation.printSensorProperties();
+    simulation->printSensorProperties();
 	
-    simulation.printEnergies();
+    simulation->printEnergies();
 
-	printf("Simulation took %i us\n",simulationTime.getExecutionTime());
+	auto sr = simulation->getSimulationResult();
+
+	switch (sr)
+	{
+	case SimulationResult::Absorbed:
+		cout << "Teilchen wurde absorbiert!" << endl;
+		break;
+	case SimulationResult::WentThrough:
+		cout << "Teilchen ist aus dem Detektor geflogen!" << endl;
+		break;
+	default:
+		cout << "This can never happen!" << endl;
+		break;
+	}
+	
+
+	cout << "N Iterations=" << N_ITERATIONS << endl;
+	//printf("myTimer took %i us\n",myTimer.getExecutionTime()/N_ITERATIONS);
+	printf("Simulation took %i us\n",simulationTime.getExecutionTime()/N_ITERATIONS);
+
+
+	delete simulation;
 }

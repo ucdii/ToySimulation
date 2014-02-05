@@ -64,7 +64,7 @@ public:
   /**
    * Wird von Konstruktoren verwendet
    */
-  void initAttributes ( Vec2 size, unsigned int N) ;
+  void initAttributes ( Vec2& size, unsigned int N) ;
 
 
 

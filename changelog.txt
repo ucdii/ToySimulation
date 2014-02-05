@@ -13,6 +13,10 @@
 - removed 3rd dimension :(
 - changed function Parameters from ClassName to ClassName& where applicable
 - removed 'initAttributes'
+- changed var names
+
+2014-02-05:
+- current execution time: ~517629us
 
 Performance:
 - start point: release, win32: 1612us

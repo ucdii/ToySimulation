@@ -14,7 +14,7 @@ public:
    * @param  current_energy
    * @param  delta_position
    */
- static double getEnergyDeposition (double delta_position );
+ static double getEnergyDeposition (double delta_position, double energy );
 };
 
 #endif // ENERGYDEPOSITION_H

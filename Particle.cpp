@@ -4,7 +4,7 @@
    *  Constructor
    */
 
-Particle::Particle ( double P_energy, Vec2 position, Vec2 direction ) : energy(P_energy), position(position), direction(direction) {}
+Particle::Particle ( double P_energy, Vec2& position, Vec2& direction ) : energy(P_energy), position(position), direction(direction) {}
 Particle::Particle() : energy(0){ }
 Particle::~Particle ( ) { }
 

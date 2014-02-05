@@ -54,7 +54,7 @@ void Simulation::printEnergies ( )
    /**
    *  public Funktion die die Simuation startet Ihr muss eine Startenergie, -Position und Richtung angegeben werden
    */
-void Simulation::run (double start_energy, Vec2 start_position, Vec2 start_direction ){
+void Simulation::run (double start_energy, Vec2& start_position, Vec2& start_direction ){
   // Deklaration unseres Starktpartikels
   Particle teilchen = Particle(start_energy, start_position, start_direction) ;
 
@@ -77,27 +77,35 @@ void Simulation::run (double start_energy, Vec2 start_position, Vec2 start_direc
         // Iterationsschritte werden auf 1/20 der kleinsten Seitenlänge gesetzt
         p_delta_position = minimum/20;
 
-   // Energie die bei diesen Schritten an den Detektor abgegeben wird
-   double energydeposit = EnergyDeposition::getEnergyDeposition(p_delta_position);
 
   // Teilchen wird bewegt bis Energie 0 ist
-  while(teilchen.getP_energy() >0)
+  for(;;)
   {
+
+	  auto tEnergy = teilchen.getP_energy();
+	  if (tEnergy <= 0)
+	  {
+		  simulationResult = SimulationResult::Absorbed;
+		  break;
+	  }
 
         // Teilchen wird um delta_position bewegt
         teilchen.move(p_delta_position);
         // Pointer auf neues Pixel wird bestimmt und dann wird diesem Pixel der ernergydeposit hinzugefügt falls sich dieser noch
         // im Sensor befindet
 
+		auto deposit = EnergyDeposition::getEnergyDeposition(p_delta_position,tEnergy);
+
         if(p_sensor.getPixel(teilchen.getP_position()) != NULL) {
-            p_sensor.getPixel(teilchen.getP_position())->addP_energy(energydeposit);
+            p_sensor.getPixel(teilchen.getP_position())->addP_energy(deposit);
         } else {
+			simulationResult = SimulationResult::WentThrough;	
             break;
         }
 
 
          // Die abgegebene Energie wird dem Teilchen entzogen
-        teilchen.addP_energy(-energydeposit);
+        teilchen.addP_energy(-deposit);
   }
 }
 

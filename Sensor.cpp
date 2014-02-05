@@ -1,5 +1,7 @@
 #include "Sensor.h"
-#include <cstddef>
+//#include <cstddef>
+
+#include "Timer.h"
 
    /**
    *  Empty Constructor
@@ -26,6 +28,8 @@ Sensor::~Sensor ( ) { }
 Pixel * Sensor::getPixel(Vec2& position)
 {
 
+	//myTimer.start();
+
     // überprüft ob position im Sensor ist  sonst wird NULL zurückgegeben
     if(withinSensor(position)){
     //Möglich: erst Nachbarn des letzten Pixels überprüfen! hier nicht gemacht!!
@@ -49,9 +53,9 @@ Pixel * Sensor::getPixel(Vec2& position)
 
             }
         }
-    } else {
-return NULL;
-    }
+    } 
+
+	//myTimer.stop();
 
 	return NULL;
 }
