@@ -10,12 +10,13 @@
 - added commandline argv option for more efficient program usage
 - fixed various typos
 - added Timer class to perform time measurements
+
+2014-02-05:
 - removed 3rd dimension :(
 - changed function Parameters from ClassName to ClassName& where applicable
 - removed 'initAttributes'
 - changed var names
-
-2014-02-05:
+- monte carlo optimization
 - define use case: !!
 - current execution Performance:
 	-> start point: release, win32: 1612us
