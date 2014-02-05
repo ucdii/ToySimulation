@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 {
 
 	bool noArgs = argc == 1;
-	bool allArgs = argc == 8;
+	bool allArgs = argc == 6;
 
 	if (!noArgs && !allArgs) return ExitWithError("Please provide either none or all arguments:\nVec3 PixelPosition, Vec3 PixelDirection, double Energy");
 	
@@ -41,8 +41,8 @@ int main(int argc, char *argv[])
 		sscanf(argv[1],"%lf",&energy);
 		sscanf(argv[2],"%lf",&position_x);
 		sscanf(argv[3],"%lf",&position_y);
-		sscanf(argv[5],"%lf",&direction_x);
-		sscanf(argv[6],"%lf",&direction_y);
+		sscanf(argv[4],"%lf",&direction_x);
+		sscanf(argv[5],"%lf",&direction_y);
 	}
 
 	printf("Energy=%.5f Pos=[%.2f/%.2f] Dir=[%.2f/%.2f]\n", energy, position_x, position_y, direction_x, direction_y);
